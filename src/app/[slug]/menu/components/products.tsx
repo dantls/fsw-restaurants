@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
+import { formatCurrency } from "@/app/helpers/format-currency";
+
 type ProductsProps = {
   products: Product[];
 };
@@ -23,10 +25,7 @@ export const Products = ({ products }: ProductsProps) => {
               {product.description}
             </p>
             <p className="pt-3 text-sm font-semibold">
-              {new Intl.NumberFormat("en-AU", {
-                style: "currency",
-                currency: "AUD",
-              }).format(product.price)}
+              {formatCurrency(product.price)}
             </p>
           </div>
           <div className="relative min-h-[82px] min-w-[120px]">
