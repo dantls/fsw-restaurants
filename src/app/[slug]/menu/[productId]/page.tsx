@@ -13,7 +13,7 @@ interface ProductPageProps {
 }
 
 const ProductPage = async ({ params }: ProductPageProps) => {
-  const { productId } = await params;
+  const { productId, slug } = await params;
 
   const product = await db.product.findUnique({
     where: { id: productId },
@@ -22,6 +22,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
         select: {
           name: true,
           avatarImageUrl: true,
+          slug: true,
         },
       },
     },
@@ -30,11 +31,16 @@ const ProductPage = async ({ params }: ProductPageProps) => {
   if (!product) {
     return notFound();
   }
+  if (
+    product.restaurant.slug.toLocaleUpperCase() !== slug.toLocaleUpperCase()
+  ) {
+    return notFound();
+  }
   return (
-    <>
+    <div className="flex h-full flex-col">
       <ProductHeader product={product} />
       <ProductDetails product={product} />
-    </>
+    </div>
   );
 };
 
