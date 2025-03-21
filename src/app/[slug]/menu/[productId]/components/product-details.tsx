@@ -7,6 +7,7 @@ import { useState } from "react";
 
 import { formatCurrency } from "@/app/helpers/format-currency";
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface ProductDetailsProps {
   product: Prisma.ProductGetPayload<{
@@ -35,9 +36,9 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
   const handleIncreaseQuantity = () => setQuantity((prev) => prev + 1);
 
   return (
-    <div className="relative z-50 mt-[-1.5rem] flex flex-auto flex-col rounded-t-3xl p-5">
-      <div className="flex-auto">
-        <div className="flex items-center gap-1">
+    <div className="relative z-50 mt-[-1.5rem] flex flex-auto flex-col overflow-hidden rounded-t-3xl p-5">
+      <div className="flex-auto overflow-hidden">
+        <div className="flex items-center gap-1.5">
           <Image
             src={product.restaurant.avatarImageUrl}
             alt={product.restaurant.name}
@@ -52,7 +53,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
 
         <h2 className="mt-1 text-xl font-semibold">{product.name}</h2>
 
-        <div className="mt-3 flex items-center justify-between">
+        <div className="mb-6 mt-3 flex items-center justify-between">
           <h3 className="text-xl font-semibold">
             {formatCurrency(product.price)}
           </h3>
@@ -75,13 +76,14 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
             </Button>
           </div>
         </div>
-
+      </div>
+      <ScrollArea className="h-full">
         <div className="mt-6 space-y-3">
           <h4 className="font-semibold">About</h4>
           <p className="text-sm text-muted-foreground">{product.description}</p>
         </div>
 
-        <div className="mt-6 space-y-3">
+        <div className="mt-6">
           <div className="flex items-center gap-1">
             <ChefHatIcon size={18} />
             <h4 className="font-semibold">Ingredients</h4>
@@ -92,7 +94,8 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
             ))}
           </ul>
         </div>
-      </div>
+      </ScrollArea>
+
       <Button className="w-full rounded-full">Add to Bag</Button>
     </div>
   );
