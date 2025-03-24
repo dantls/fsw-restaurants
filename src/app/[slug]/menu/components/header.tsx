@@ -18,7 +18,7 @@ const RestaurantHeader = ({ restaurant }: RestaurantHeaderProps) => {
   };
 
   return (
-    <div className="relative h-[250px] w-full">
+    <div className="relative min-h-[200px] w-full">
       <Button
         variant="secondary"
         size="icon"
