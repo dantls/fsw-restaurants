@@ -12,7 +12,7 @@ interface CarProductItemProps {
 }
 
 const CarProductItem = ({ product }: CarProductItemProps) => {
-  const { decreaseProductQuantity, increaseProductQuantity } =
+  const { decreaseProductQuantity, increaseProductQuantity, removeProduct } =
     useContext(CartContext);
 
   return (
@@ -31,22 +31,26 @@ const CarProductItem = ({ product }: CarProductItemProps) => {
             <Button
               variant="outline"
               className="h-7 w-7 rounded-lg"
-              onClick={() => increaseProductQuantity(product.id)}
+              onClick={() => decreaseProductQuantity(product.id)}
             >
               <ChevronLeftIcon />
             </Button>
-            <p className="w-7 text-xs">{product.quantity}</p>
+            <p className="w-7 text-center text-xs">{product.quantity}</p>
             <Button
               variant="destructive"
               className="h-7 w-7 rounded-lg"
-              onClick={() => decreaseProductQuantity(product.id)}
+              onClick={() => increaseProductQuantity(product.id)}
             >
               <ChevronRightIcon />
             </Button>
           </div>
         </div>
       </div>
-      <Button variant="outline" className="absolute right-4 h-7 w-7 rounded-lg">
+      <Button
+        variant="outline"
+        className="absolute right-4 h-7 w-7 rounded-lg"
+        onClick={() => removeProduct(product.id)}
+      >
         <TrashIcon />
       </Button>
     </div>
