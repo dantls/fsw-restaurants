@@ -31,7 +31,7 @@ const CarProductItem = ({ product }: CarProductItemProps) => {
             <Button
               variant="outline"
               className="h-7 w-7 rounded-lg"
-              onClick={() => decreaseProductQuantity(product.id)}
+              onClick={() => decreaseProductQuantity(product)}
             >
               <ChevronLeftIcon />
             </Button>
@@ -39,7 +39,7 @@ const CarProductItem = ({ product }: CarProductItemProps) => {
             <Button
               variant="destructive"
               className="h-7 w-7 rounded-lg"
-              onClick={() => increaseProductQuantity(product.id)}
+              onClick={() => increaseProductQuantity(product)}
             >
               <ChevronRightIcon />
             </Button>
@@ -49,7 +49,7 @@ const CarProductItem = ({ product }: CarProductItemProps) => {
       <Button
         variant="outline"
         className="absolute right-4 h-7 w-7 rounded-lg"
-        onClick={() => removeProduct(product.id)}
+        onClick={() => removeProduct(product)}
       >
         <TrashIcon />
       </Button>
