@@ -12,6 +12,7 @@ import {
 
 import { CartContext } from "../../contexts/cart";
 import CarProductItem from "./cart-product-item";
+import FinishOrderButton from "./finish-order-button";
 
 const CartSheet = () => {
   const { toggleCart, isOpen, products, total } = useContext(CartContext);
@@ -35,8 +36,8 @@ const CartSheet = () => {
                 <p className="text-semibold text-sm">{formatCurrency(total)}</p>
               </div>
             </CardContent>
+            <FinishOrderButton />
           </Card>
-          <Button className="w-full rounded-full">Confirm Order</Button>
         </div>
       </SheetContent>
     </Sheet>
