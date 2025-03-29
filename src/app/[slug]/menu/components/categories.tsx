@@ -39,7 +39,7 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
   };
 
   const getCategoryButtonVariant = (category: MenuCategoriesWithProducts) => {
-    return selectedCategory.id === category.id ? "default" : "secondary";
+    return selectedCategory.id === category.id ? "destructive" : "secondary";
   };
 
   return (

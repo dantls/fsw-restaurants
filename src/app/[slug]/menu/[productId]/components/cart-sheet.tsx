@@ -1,7 +1,6 @@
 import { useContext } from "react";
 
 import { formatCurrency } from "@/app/helpers/format-currency";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Sheet,
@@ -36,8 +35,8 @@ const CartSheet = () => {
                 <p className="text-semibold text-sm">{formatCurrency(total)}</p>
               </div>
             </CardContent>
-            <FinishOrderButton />
           </Card>
+          <FinishOrderButton />
         </div>
       </SheetContent>
     </Sheet>
